@@ -1,0 +1,8 @@
+C:\Users\octav\Documents\TrabajosProgramacion\RedBus\DatosTarjeta\obj\Debug\DatosTarjeta.csprojAssemblyReference.cache
+C:\Users\octav\Documents\TrabajosProgramacion\RedBus\DatosTarjeta\bin\Debug\DatosTarjeta.dll
+C:\Users\octav\Documents\TrabajosProgramacion\RedBus\DatosTarjeta\bin\Debug\DatosTarjeta.pdb
+C:\Users\octav\Documents\TrabajosProgramacion\RedBus\DatosTarjeta\bin\Debug\Entidades.dll
+C:\Users\octav\Documents\TrabajosProgramacion\RedBus\DatosTarjeta\bin\Debug\Entidades.pdb
+C:\Users\octav\Documents\TrabajosProgramacion\RedBus\DatosTarjeta\obj\Debug\DatosTarjeta.csproj.CopyComplete
+C:\Users\octav\Documents\TrabajosProgramacion\RedBus\DatosTarjeta\obj\Debug\DatosTarjeta.dll
+C:\Users\octav\Documents\TrabajosProgramacion\RedBus\DatosTarjeta\obj\Debug\DatosTarjeta.pdb
