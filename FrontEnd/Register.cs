@@ -15,25 +15,42 @@ namespace FrontEnd
     public partial class Register : Form
     {
         public Persona objPersona = new Persona();
-    
-        public CapsulaPersona objCapsulaPersona = new CapsulaPersona();
-        
+        public Tarjeta objTarjeta = new Tarjeta();
 
+        public CapsulaPersona objCapsulaPersona = new CapsulaPersona();
+        public CapsulaTarjeta capsulaTarjeta = new CapsulaTarjeta();
+
+        bool validar = true;
 
         public Register()
         {
             InitializeComponent();
+            
         }
+
+        public bool validacion()
+        {
+           
+            if (txtCUIT.Text == null || txtDNI.Text == null || txtNombre.Text == null || cbTDni.SelectedItem == null ||cbSexo.SelectedItem == null || txtNroTar.Text == null )
+            { validar = false; }
+
+            return validar;
+        }
+
 
         private void TxtBox_a_Obj()
         {
-            objPersona.DNI = int.Parse(txtDNI.Text);
-            objPersona.CUIT = long.Parse(txtDNI.Text);
-            objPersona.Nombre = txtNombre.Text;
-            objPersona.Sexo = Convert.ToChar(cbSexo.SelectedItem);
-            objPersona.Tdni = Convert.ToString(cbTDni.SelectedItem);
-            objPersona.FechaNac = dtFechaNac.Value;
-            objPersona.NroTarjeta = int.Parse(txtNroTar.Text);
+            
+                objPersona.DNI = int.Parse(txtDNI.Text);
+                objPersona.CUIT = long.Parse(txtCUIT.Text);
+                objPersona.Nombre = txtNombre.Text;
+                objPersona.Sexo = Convert.ToChar(cbSexo.SelectedItem);
+                objPersona.Tdni = Convert.ToString(cbTDni.SelectedItem);
+                objPersona.FechaNac = dtFechaNac.Value;
+                objPersona.NroTarjeta = int.Parse(txtNroTar.Text);
+                
+  
+            
             
         }
         private void txtCUIT_KeyPress(object sender, KeyPressEventArgs e)
@@ -70,19 +87,63 @@ namespace FrontEnd
 
         private void btnReg_Click(object sender, EventArgs e)
         {
-            int nGrabados = -1;
-            TxtBox_a_Obj();
-            
-            nGrabados = objCapsulaPersona.abmPersona("Alta", objPersona);
+            //try
+            //{
+            //    objTarjeta.NroTarjeta = int.Parse(txtNroTar.Text);
+            //    DataSet ds = new DataSet();
 
-            if (nGrabados == -1)
-            { lblInfo.Text = "  No pudo grabar la Persona en el sistema"; }
-            else
-            {
-                lblInfo.Text = "  Se grabó con éxito Persona.";
-            }
+            //    ds = capsulaTarjeta.listadoTarjetas(objTarjeta.NroTarjeta.ToString());
 
-            
+
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("La tarjeta ya existe");
+            //}
+            validacion();
+          if (validar == true )
+          {
+                int nGrabados = -1;
+                int verificacion = -1;
+
+                TxtBox_a_Obj();
+
+
+                verificacion = objCapsulaPersona.abmPersona("Verify", objPersona);
+
+                if (verificacion == -1)
+                {
+                    nGrabados = objCapsulaPersona.abmPersona("Alta", objPersona);
+
+                    if (nGrabados == -1)
+                    { lblInfo.Text = " Error al registrar la persona"; }
+
+                    else
+                    {
+                        lblInfo.Text = "  Se grabó con éxito Persona.";
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("La Tarjeta ya Existe", "Error");
+                }
+          }
+          if (validar == false)
+            { MessageBox.Show("Controle los datos", "Error"); }
+                                                            
+        }
+
+        private void dtFechaNac_ValueChanged(object sender, EventArgs e)
+        {
+
+            // Save today's date.
+            var today = DateTime.Today;
+            // Calculate the age.
+            var age = today.Year - dtFechaNac.Value.Year;
+            // Go back to the year the person was born in case of a leap year
+            if (dtFechaNac.Value.Date > today.AddYears(-age)) age--;
+            lbledad.Text = age.ToString();
         }
     }
     

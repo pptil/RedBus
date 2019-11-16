@@ -14,8 +14,8 @@ namespace Capsula
         DatosPersona objDatosPersona = new DatosPersona();
 
         public int abmPersona(string accion, Persona objpersona )
-        { return objDatosPersona.AbmPersona(accion, objpersona); }
+        { return objDatosPersona.abmPersona(accion, objpersona); }
 
-        public DataSet listadoPersona(string cual) { return objDatosPersona.listadoPersonas(cual); }
+        public DataSet listadopersonas(string cual) { return objDatosPersona.listadopersonas(cual); }
     }
 }

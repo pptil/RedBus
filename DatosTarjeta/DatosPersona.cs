@@ -11,43 +11,80 @@ namespace DatosTarjeta
 {
     public class DatosPersona : DatosConexionBD
     {
-        public int AbmPersona(string accion, Persona objpersona)
+        public int abmPersona(string accion, Persona objpersona)
         {
             int resultado = -1;
             string orden = string.Empty;
+            
+                   
+            if (accion == "Verify")
+            { 
+                orden = "select NroTarjeta from Tarjetas where NroTarjeta = " + objpersona.NroTarjeta + " ;";
 
-            if (accion == "Alta")
-            { orden = "insert into Persona values (" + objpersona.DNI + ", '" + objpersona.Nombre + "', '" + objpersona.Sexo + "', '" + objpersona.FechaNac + "', " + objpersona.CUIT + ", '" + objpersona.Tdni + "' ) insert into Tarjetas values ( " + objpersona.NroTarjeta + ", 0, " + objpersona.DNI + ");"; }
+                SqlCommand cmd = new SqlCommand(orden, conexion);
+                try
+                {
+                    Abrirconexion();
+                    resultado = cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Error al tratar de guardar la Persona", e);
+                }
 
-
-            SqlCommand cmd = new SqlCommand(orden, conexion);
-
-            try
-            {
-                Abrirconexion();
-                resultado = cmd.ExecuteNonQuery();
+                finally
+                {
+                    Cerrarconexion();
+                    cmd.Dispose();
+                }                
             }
-            catch (Exception e)
-            {
-                throw new Exception("Error al tratar de guardar la Persona", e);
-            }
 
-            finally
+            if (resultado == -1)
             {
-                Cerrarconexion();
-                cmd.Dispose();
+                if (accion == "Alta")
+                { orden = "insert into Persona values (" + objpersona.DNI + ", '" + objpersona.Nombre + "', '" + objpersona.Sexo + "', '" + objpersona.FechaNac.ToString("yyyy/MM/dd") + "', " + objpersona.CUIT.ToString() + ", '" + objpersona.Tdni + "' ) insert into Tarjetas values ( " + objpersona.NroTarjeta + ", 0, " + objpersona.DNI + ");"; }
+                SqlCommand cmd = new SqlCommand(orden, conexion);
+
+
+                try
+                {
+                    Abrirconexion();
+                    resultado = cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Error al tratar de guardar la Persona", e);
+                }
+
+                finally
+                {
+                    Cerrarconexion();
+                    cmd.Dispose();
+                }
+               
+            }
+            else
+            {
+                resultado = -1;
             }
             return resultado;
         }
 
+           
 
-        public DataSet listadoPersonas(string cual)
+
+        public DataSet listadopersonas(string cual)
         {
             string orden = string.Empty;
 
             if (cual != "Todos")
                 orden = "select Nombre from Persona where DNI= " + int.Parse(cual) + ";";
             else orden = "select Nombre from Persona;";
+
+            if (cual != "Todos" && cual == orden)
+            {
+
+            }
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
             DataSet ds = new DataSet(); SqlDataAdapter da = new SqlDataAdapter();

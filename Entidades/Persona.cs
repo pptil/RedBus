@@ -13,7 +13,7 @@ namespace Entidades
         private long cuit;
         private string nombre, tdni;
         private char sexo;
-        private DateTime? fechanac;
+        private DateTime fechanac;
         #endregion
 
         #region Constructores
@@ -24,7 +24,7 @@ namespace Entidades
             nombre = string.Empty;
             sexo = '\0';
             tdni = string.Empty;
-            fechanac = null;
+            fechanac = DateTime.MinValue;
             nrotarjeta = 0;
         }
         #endregion
@@ -60,7 +60,7 @@ namespace Entidades
             set { tdni = value; }
         }
 
-        public DateTime? FechaNac
+        public DateTime FechaNac
         {
             get { return fechanac; }
             set { fechanac = value; }
@@ -73,7 +73,13 @@ namespace Entidades
         #endregion
 
         #region Metodos
-
+        
+        public DateTime ConvUTC(DateTime dt)
+        {
+            fechanac = dt.ToUniversalTime();
+            return fechanac;
+        }
+        
         #endregion
     }
 }

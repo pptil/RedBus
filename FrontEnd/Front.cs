@@ -24,6 +24,7 @@ namespace FrontEnd
             InitializeComponent();
             ArmarDGV();
             LlenarDGV();
+            
         }
 
         private void ArmarDGV()
@@ -45,7 +46,7 @@ namespace FrontEnd
             DataSet ds = new DataSet();
             DataSet dsp = new DataSet();
             ds = objCapsulaTarjeta.listadoTarjetas("Todos");
-            dsp = objCapsulaPersona.listadoPersona("Todos");
+            dsp = objCapsulaPersona.listadopersonas("Todos");
 
             if (ds.Tables[0].Rows.Count > 0)
             {

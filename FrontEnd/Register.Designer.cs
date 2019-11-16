@@ -45,6 +45,7 @@
             this.lblNroTar = new System.Windows.Forms.Label();
             this.txtNroTar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbledad = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             // lblCUIT
             // 
             this.lblCUIT.AutoSize = true;
-            this.lblCUIT.Location = new System.Drawing.Point(72, 200);
+            this.lblCUIT.Location = new System.Drawing.Point(72, 205);
             this.lblCUIT.Name = "lblCUIT";
             this.lblCUIT.Size = new System.Drawing.Size(32, 13);
             this.lblCUIT.TabIndex = 1;
@@ -96,7 +97,7 @@
             // lblTDni
             // 
             this.lblTDni.AutoSize = true;
-            this.lblTDni.Location = new System.Drawing.Point(72, 248);
+            this.lblTDni.Location = new System.Drawing.Point(72, 253);
             this.lblTDni.Name = "lblTDni";
             this.lblTDni.Size = new System.Drawing.Size(65, 13);
             this.lblTDni.TabIndex = 5;
@@ -111,7 +112,7 @@
             // 
             // txtCUIT
             // 
-            this.txtCUIT.Location = new System.Drawing.Point(74, 216);
+            this.txtCUIT.Location = new System.Drawing.Point(74, 221);
             this.txtCUIT.MaxLength = 11;
             this.txtCUIT.Name = "txtCUIT";
             this.txtCUIT.Size = new System.Drawing.Size(100, 20);
@@ -135,7 +136,7 @@
             "CI",
             "LE",
             "LC"});
-            this.cbTDni.Location = new System.Drawing.Point(74, 264);
+            this.cbTDni.Location = new System.Drawing.Point(75, 269);
             this.cbTDni.Name = "cbTDni";
             this.cbTDni.Size = new System.Drawing.Size(121, 21);
             this.cbTDni.TabIndex = 9;
@@ -153,10 +154,12 @@
             // 
             // dtFechaNac
             // 
+            this.dtFechaNac.CustomFormat = "MM/dd/yyyy";
             this.dtFechaNac.Location = new System.Drawing.Point(74, 167);
             this.dtFechaNac.Name = "dtFechaNac";
             this.dtFechaNac.Size = new System.Drawing.Size(200, 20);
             this.dtFechaNac.TabIndex = 11;
+            this.dtFechaNac.ValueChanged += new System.EventHandler(this.dtFechaNac_ValueChanged);
             // 
             // btnReg
             // 
@@ -180,7 +183,7 @@
             // lblNroTar
             // 
             this.lblNroTar.AutoSize = true;
-            this.lblNroTar.Location = new System.Drawing.Point(72, 302);
+            this.lblNroTar.Location = new System.Drawing.Point(72, 306);
             this.lblNroTar.Name = "lblNroTar";
             this.lblNroTar.Size = new System.Drawing.Size(70, 13);
             this.lblNroTar.TabIndex = 14;
@@ -188,7 +191,7 @@
             // 
             // txtNroTar
             // 
-            this.txtNroTar.Location = new System.Drawing.Point(74, 318);
+            this.txtNroTar.Location = new System.Drawing.Point(74, 322);
             this.txtNroTar.MaxLength = 8;
             this.txtNroTar.Name = "txtNroTar";
             this.txtNroTar.Size = new System.Drawing.Size(100, 20);
@@ -206,12 +209,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // lbledad
+            // 
+            this.lbledad.AutoSize = true;
+            this.lbledad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbledad.Location = new System.Drawing.Point(222, 194);
+            this.lbledad.Name = "lbledad";
+            this.lbledad.Size = new System.Drawing.Size(35, 13);
+            this.lbledad.TabIndex = 17;
+            this.lbledad.Text = "Edad:";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(301, 465);
+            this.Controls.Add(this.lbledad);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtNroTar);
             this.Controls.Add(this.lblNroTar);
@@ -256,5 +270,6 @@
         private System.Windows.Forms.Label lblNroTar;
         private System.Windows.Forms.TextBox txtNroTar;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lbledad;
     }
 }

@@ -80,12 +80,13 @@ namespace DatosTarjeta
             string orden = string.Empty;
 
             if (cual != "Todos")
-                orden = "select NroTarjeta, Saldo, DNI, Nombre from Tarjetas b, Persona a where b.DNI = a.DNI and NroTarjeta = " + int.Parse(cual) + ";";
+                orden = "select NroTarjeta, Saldo from Tarjetas where NroTarjeta = " + int.Parse(cual) + ";";
             else 
                 orden = "select NroTarjeta, Saldo, a.DNI, Nombre from Tarjetas b, Persona a where b.DNI = a.DNI;";
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
-            DataSet ds = new DataSet(); SqlDataAdapter da = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter();
             try
             {
                 Abrirconexion(); cmd.ExecuteNonQuery();
