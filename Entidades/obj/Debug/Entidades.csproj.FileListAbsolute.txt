@@ -3,3 +3,8 @@ C:\Users\octav\Documents\TrabajosProgramacion\RedBus\Entidades\bin\Debug\Entidad
 C:\Users\octav\Documents\TrabajosProgramacion\RedBus\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
 C:\Users\octav\Documents\TrabajosProgramacion\RedBus\Entidades\obj\Debug\Entidades.dll
 C:\Users\octav\Documents\TrabajosProgramacion\RedBus\Entidades\obj\Debug\Entidades.pdb
+C:\Users\octav\Documents\GitHub\RedBus\Entidades\bin\Debug\Entidades.dll
+C:\Users\octav\Documents\GitHub\RedBus\Entidades\bin\Debug\Entidades.pdb
+C:\Users\octav\Documents\GitHub\RedBus\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\octav\Documents\GitHub\RedBus\Entidades\obj\Debug\Entidades.dll
+C:\Users\octav\Documents\GitHub\RedBus\Entidades\obj\Debug\Entidades.pdb

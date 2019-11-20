@@ -9,7 +9,7 @@ namespace Entidades
     public class Persona
     {
         #region Atributos
-        private int dni, nrotarjeta;
+        private int dni;
         private long cuit;
         private string nombre, tdni;
         private char sexo;
@@ -25,7 +25,6 @@ namespace Entidades
             sexo = '\0';
             tdni = string.Empty;
             fechanac = DateTime.MinValue;
-            nrotarjeta = 0;
         }
         #endregion
 
@@ -65,21 +64,19 @@ namespace Entidades
             get { return fechanac; }
             set { fechanac = value; }
         }
-        public int NroTarjeta
-        {
-            get { return nrotarjeta; }
-            set { nrotarjeta = value; }
-        }
+
+
         #endregion
 
         #region Metodos
-        
+
         public DateTime ConvUTC(DateTime dt)
         {
             fechanac = dt.ToUniversalTime();
             return fechanac;
         }
-        
+
         #endregion
     }
 }
+

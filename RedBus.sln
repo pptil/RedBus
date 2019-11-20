@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Enti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "FrontEnd\FrontEnd.csproj", "{9DBBC48E-1890-47CF-8C3C-3BD5D28B4865}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewFront", "NewFront\NewFront.csproj", "{53C990EF-CA86-4C48-B7A8-39E00DF92FD3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5BCEC795-6DB4-4651-9047-588945C24947} = {5BCEC795-6DB4-4651-9047-588945C24947}
+		{AE126097-CD08-4576-A90A-0150F3093952} = {AE126097-CD08-4576-A90A-0150F3093952}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +39,10 @@ Global
 		{9DBBC48E-1890-47CF-8C3C-3BD5D28B4865}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DBBC48E-1890-47CF-8C3C-3BD5D28B4865}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DBBC48E-1890-47CF-8C3C-3BD5D28B4865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C990EF-CA86-4C48-B7A8-39E00DF92FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C990EF-CA86-4C48-B7A8-39E00DF92FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C990EF-CA86-4C48-B7A8-39E00DF92FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C990EF-CA86-4C48-B7A8-39E00DF92FD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

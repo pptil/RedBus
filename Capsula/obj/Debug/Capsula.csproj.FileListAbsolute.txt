@@ -8,3 +8,13 @@ C:\Users\octav\Documents\TrabajosProgramacion\RedBus\Capsula\obj\Debug\Capsula.c
 C:\Users\octav\Documents\TrabajosProgramacion\RedBus\Capsula\obj\Debug\Capsula.csproj.CopyComplete
 C:\Users\octav\Documents\TrabajosProgramacion\RedBus\Capsula\obj\Debug\Capsula.dll
 C:\Users\octav\Documents\TrabajosProgramacion\RedBus\Capsula\obj\Debug\Capsula.pdb
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\bin\Debug\Capsula.dll
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\bin\Debug\Capsula.pdb
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\bin\Debug\DatosTarjeta.dll
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\bin\Debug\Entidades.dll
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\bin\Debug\DatosTarjeta.pdb
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\bin\Debug\Entidades.pdb
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\obj\Debug\Capsula.csprojAssemblyReference.cache
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\obj\Debug\Capsula.csproj.CopyComplete
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\obj\Debug\Capsula.dll
+C:\Users\octav\Documents\GitHub\RedBus\Capsula\obj\Debug\Capsula.pdb

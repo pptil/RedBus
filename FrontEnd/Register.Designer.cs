@@ -42,8 +42,6 @@
             this.dtFechaNac = new System.Windows.Forms.DateTimePicker();
             this.btnReg = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.lblNroTar = new System.Windows.Forms.Label();
-            this.txtNroTar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbledad = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -180,24 +178,6 @@
             this.lblInfo.TabIndex = 13;
             this.lblInfo.Text = "Informacion.";
             // 
-            // lblNroTar
-            // 
-            this.lblNroTar.AutoSize = true;
-            this.lblNroTar.Location = new System.Drawing.Point(72, 306);
-            this.lblNroTar.Name = "lblNroTar";
-            this.lblNroTar.Size = new System.Drawing.Size(70, 13);
-            this.lblNroTar.TabIndex = 14;
-            this.lblNroTar.Text = "Nº de Tarjeta";
-            // 
-            // txtNroTar
-            // 
-            this.txtNroTar.Location = new System.Drawing.Point(74, 322);
-            this.txtNroTar.MaxLength = 8;
-            this.txtNroTar.Name = "txtNroTar";
-            this.txtNroTar.Size = new System.Drawing.Size(100, 20);
-            this.txtNroTar.TabIndex = 15;
-            this.txtNroTar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNroTar_KeyPress);
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -227,8 +207,6 @@
             this.ClientSize = new System.Drawing.Size(301, 465);
             this.Controls.Add(this.lbledad);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtNroTar);
-            this.Controls.Add(this.lblNroTar);
             this.Controls.Add(this.btnReg);
             this.Controls.Add(this.dtFechaNac);
             this.Controls.Add(this.cbSexo);
@@ -267,8 +245,6 @@
         private System.Windows.Forms.DateTimePicker dtFechaNac;
         private System.Windows.Forms.Button btnReg;
         private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.Label lblNroTar;
-        private System.Windows.Forms.TextBox txtNroTar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbledad;
     }

@@ -16,6 +16,10 @@ namespace Capsula
         public int abmPersona(string accion, Persona objpersona )
         { return objDatosPersona.abmPersona(accion, objpersona); }
 
+        public string GetNombre(string cual)
+        {
+            return objDatosPersona.GetNombre(cual);
+        }
         public DataSet listadopersonas(string cual) { return objDatosPersona.listadopersonas(cual); }
     }
 }

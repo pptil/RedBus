@@ -14,35 +14,10 @@ namespace DatosTarjeta
         public int abmPersona(string accion, Persona objpersona)
         {
             int resultado = -1;
-            string orden = string.Empty;
-            
-                   
-            if (accion == "Verify")
-            { 
-                orden = "select NroTarjeta from Tarjetas where NroTarjeta = " + objpersona.NroTarjeta + " ;";
+            string orden = string.Empty;                                     
 
-                SqlCommand cmd = new SqlCommand(orden, conexion);
-                try
-                {
-                    Abrirconexion();
-                    resultado = cmd.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Error al tratar de guardar la Persona", e);
-                }
-
-                finally
-                {
-                    Cerrarconexion();
-                    cmd.Dispose();
-                }                
-            }
-
-            if (resultado == -1)
-            {
                 if (accion == "Alta")
-                { orden = "insert into Persona values (" + objpersona.DNI + ", '" + objpersona.Nombre + "', '" + objpersona.Sexo + "', '" + objpersona.FechaNac.ToString("yyyy/MM/dd") + "', " + objpersona.CUIT.ToString() + ", '" + objpersona.Tdni + "' ) insert into Tarjetas values ( " + objpersona.NroTarjeta + ", 0, " + objpersona.DNI + ");"; }
+                { orden = "insert into Persona values (" + objpersona.DNI + ", '" + objpersona.Nombre + "', '" + objpersona.Sexo + "', '" + objpersona.FechaNac.ToString("yyyy/MM/dd") + "', " + objpersona.CUIT.ToString() + ", '" + objpersona.Tdni + "');"; }
                 SqlCommand cmd = new SqlCommand(orden, conexion);
 
 
@@ -61,17 +36,36 @@ namespace DatosTarjeta
                     Cerrarconexion();
                     cmd.Dispose();
                 }
-               
-            }
-            else
-            {
-                resultado = -1;
-            }
+
             return resultado;
         }
 
            
+        public string GetNombre(string cual)
+        {
 
+            var resultado = string.Empty;
+            string orden = "select Nombre from Persona where DNI = " + int.Parse(cual) + "; ";
+
+            SqlCommand cmd = new SqlCommand(orden, conexion);
+            try
+            {
+                Abrirconexion(); 
+                resultado = cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al listar Personas", e);
+            }
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
+            return resultado;
+
+
+        }
 
         public DataSet listadopersonas(string cual)
         {
@@ -81,10 +75,6 @@ namespace DatosTarjeta
                 orden = "select Nombre from Persona where DNI= " + int.Parse(cual) + ";";
             else orden = "select Nombre from Persona;";
 
-            if (cual != "Todos" && cual == orden)
-            {
-
-            }
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
             DataSet ds = new DataSet(); SqlDataAdapter da = new SqlDataAdapter();
@@ -105,6 +95,6 @@ namespace DatosTarjeta
             }
             return ds;
         }
-}
+    }
 }
 

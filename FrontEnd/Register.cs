@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Capsula;
@@ -31,7 +24,7 @@ namespace FrontEnd
         public bool validacion()
         {
            
-            if (txtCUIT.Text == null || txtDNI.Text == null || txtNombre.Text == null || cbTDni.SelectedItem == null ||cbSexo.SelectedItem == null || txtNroTar.Text == null )
+            if (txtCUIT.Text == null || txtDNI.Text == null || txtNombre.Text == null || cbTDni.SelectedItem == null ||cbSexo.SelectedItem == null)
             { validar = false; }
 
             return validar;
@@ -47,7 +40,7 @@ namespace FrontEnd
                 objPersona.Sexo = Convert.ToChar(cbSexo.SelectedItem);
                 objPersona.Tdni = Convert.ToString(cbTDni.SelectedItem);
                 objPersona.FechaNac = dtFechaNac.Value;
-                objPersona.NroTarjeta = int.Parse(txtNroTar.Text);
+                //objPersona.NroTarjeta = int.Parse(txtNroTar.Text);
                 
   
             
@@ -64,10 +57,10 @@ namespace FrontEnd
             ControlNumero(e);
         }
 
-        private void txtNroTar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ControlNumero(e);
-        }
+        //private void txtNroTar_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+           // ControlNumero(e);
+        //}
 
         private void ControlNumero(KeyPressEventArgs e)
         {
@@ -86,51 +79,26 @@ namespace FrontEnd
         }
 
         private void btnReg_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    objTarjeta.NroTarjeta = int.Parse(txtNroTar.Text);
-            //    DataSet ds = new DataSet();
+        {       
+        validacion();
+         
+            int nGrabados = -1;
+            
 
-            //    ds = capsulaTarjeta.listadoTarjetas(objTarjeta.NroTarjeta.ToString());
+            TxtBox_a_Obj();
 
+               
+            nGrabados = objCapsulaPersona.abmPersona("Alta", objPersona);
 
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("La tarjeta ya existe");
-            //}
-            validacion();
-          if (validar == true )
-          {
-                int nGrabados = -1;
-                int verificacion = -1;
+            if (nGrabados == -1)
+            { lblInfo.Text = " Error al registrar la persona"; }
 
-                TxtBox_a_Obj();
+            else
+            {
+                  lblInfo.Text = "  Se grabó con éxito Persona.";
+            }
+                
 
-
-                verificacion = objCapsulaPersona.abmPersona("Verify", objPersona);
-
-                if (verificacion == -1)
-                {
-                    nGrabados = objCapsulaPersona.abmPersona("Alta", objPersona);
-
-                    if (nGrabados == -1)
-                    { lblInfo.Text = " Error al registrar la persona"; }
-
-                    else
-                    {
-                        lblInfo.Text = "  Se grabó con éxito Persona.";
-                    }
-                }
-
-                else
-                {
-                    MessageBox.Show("La Tarjeta ya Existe", "Error");
-                }
-          }
-          if (validar == false)
-            { MessageBox.Show("Controle los datos", "Error"); }
                                                             
         }
 
