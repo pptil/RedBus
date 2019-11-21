@@ -69,13 +69,7 @@ namespace Entidades
         #endregion
 
         #region Metodos
-
-        public DateTime ConvUTC(DateTime dt)
-        {
-            fechanac = dt.ToUniversalTime();
-            return fechanac;
-        }
-
+        public DateTime ConvUTC(DateTime dt){ fechanac = dt.ToUniversalTime(); return fechanac; }
         #endregion
     }
 }

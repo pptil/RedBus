@@ -38,8 +38,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblMonto = new System.Windows.Forms.Label();
             this.btnVerify = new System.Windows.Forms.Button();
-            this.lblSaldoActual = new System.Windows.Forms.Label();
-            this.txtSaldoActual = new System.Windows.Forms.TextBox();
+            this.btnTarjetas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNroTar
@@ -48,6 +47,8 @@
             this.txtNroTar.Name = "txtNroTar";
             this.txtNroTar.Size = new System.Drawing.Size(116, 20);
             this.txtNroTar.TabIndex = 0;
+            this.txtNroTar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtNroTar_MouseClick);
+            this.txtNroTar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNroTar_KeyPress);
             // 
             // txtDNI
             // 
@@ -55,6 +56,8 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(116, 20);
             this.txtDNI.TabIndex = 1;
+            this.txtDNI.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtDNI_MouseClick);
+            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
             // 
             // txtSaldo
             // 
@@ -63,9 +66,11 @@
             this.txtSaldo.Size = new System.Drawing.Size(116, 20);
             this.txtSaldo.TabIndex = 2;
             this.txtSaldo.Text = "0";
+            this.txtSaldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaldo_KeyPress);
             // 
             // btnAdd
             // 
+            this.btnAdd.Enabled = false;
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAdd.Location = new System.Drawing.Point(9, 378);
             this.btnAdd.Name = "btnAdd";
@@ -77,6 +82,7 @@
             // 
             // btnRes
             // 
+            this.btnRes.Enabled = false;
             this.btnRes.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnRes.Location = new System.Drawing.Point(76, 378);
             this.btnRes.Name = "btnRes";
@@ -136,22 +142,17 @@
             this.btnVerify.UseVisualStyleBackColor = false;
             this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
-            // lblSaldoActual
+            // btnTarjetas
             // 
-            this.lblSaldoActual.AutoSize = true;
-            this.lblSaldoActual.Location = new System.Drawing.Point(177, 295);
-            this.lblSaldoActual.Name = "lblSaldoActual";
-            this.lblSaldoActual.Size = new System.Drawing.Size(79, 13);
-            this.lblSaldoActual.TabIndex = 10;
-            this.lblSaldoActual.Text = "Saldo Actual";
-            // 
-            // txtSaldoActual
-            // 
-            this.txtSaldoActual.Location = new System.Drawing.Point(181, 336);
-            this.txtSaldoActual.Name = "txtSaldoActual";
-            this.txtSaldoActual.ReadOnly = true;
-            this.txtSaldoActual.Size = new System.Drawing.Size(116, 20);
-            this.txtSaldoActual.TabIndex = 11;
+            this.btnTarjetas.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnTarjetas.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnTarjetas.Location = new System.Drawing.Point(229, 144);
+            this.btnTarjetas.Name = "btnTarjetas";
+            this.btnTarjetas.Size = new System.Drawing.Size(75, 180);
+            this.btnTarjetas.TabIndex = 10;
+            this.btnTarjetas.Text = "Ver Tarjetas";
+            this.btnTarjetas.UseVisualStyleBackColor = false;
+            this.btnTarjetas.Click += new System.EventHandler(this.btnTarjetas_Click_1);
             // 
             // Checking
             // 
@@ -159,8 +160,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(338, 450);
-            this.Controls.Add(this.txtSaldoActual);
-            this.Controls.Add(this.lblSaldoActual);
+            this.Controls.Add(this.btnTarjetas);
             this.Controls.Add(this.btnVerify);
             this.Controls.Add(this.lblMonto);
             this.Controls.Add(this.lblNombre);
@@ -193,8 +193,7 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblMonto;
         private System.Windows.Forms.Button btnVerify;
-        private System.Windows.Forms.Label lblSaldoActual;
-        private System.Windows.Forms.TextBox txtSaldoActual;
+        private System.Windows.Forms.Button btnTarjetas;
     }
 }
 

@@ -8,10 +8,12 @@ namespace FrontEnd
 {
     public partial class Front : Form
     {
+        #region inicializadores
         public Tarjeta objTarjeta = new Tarjeta();
         public Persona objPersona = new Persona();
         public CapsulaTarjeta objCapsulaTarjeta = new CapsulaTarjeta();
         public CapsulaPersona objCapsulaPersona = new CapsulaPersona();
+        #endregion
 
         public Front()
         {
@@ -21,6 +23,20 @@ namespace FrontEnd
 
         }
 
+        private void Borrar()
+        {
+            int nResultado = -1;            
+            nResultado = objCapsulaTarjeta.DeleteTarjeta(objTarjeta);
+
+            if (nResultado != -1)
+            {
+                MessageBox.Show("La tarjeta se ha borrado exitosamente", "AVISO", MessageBoxButtons.OK);
+            }
+            else
+                MessageBox.Show("Error al borrar la tarjeta", "ATENCION", MessageBoxButtons.OK);
+        }
+
+        #region DGV
         private void ArmarDGV()
         {
             dgvTarjetas.ColumnCount = 4;
@@ -51,6 +67,9 @@ namespace FrontEnd
 
             }
         }
+        #endregion
+
+        #region Clicks
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             dgvTarjetas.Columns.Clear();
@@ -59,132 +78,58 @@ namespace FrontEnd
 
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("¿Desea Borrar la Tarjeta?", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                Borrar();
+                dgvTarjetas.Columns.Clear();
+                ArmarDGV();
+                LlenarDGV();
+
+            }
+        }
+
         private void DgvTarjetas_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             DataSet ds = new DataSet();
 
             objTarjeta.NroTarjeta = Convert.ToInt32(dgvTarjetas.CurrentRow.Cells[0].Value);
             objTarjeta.Saldo = Convert.ToInt32(dgvTarjetas.CurrentRow.Cells[1].Value);
-
-
-
             ds = objCapsulaTarjeta.listadoTarjetas(objTarjeta.NroTarjeta.ToString());
 
+            #region comentado
+            //if (ds.Tables[0].Rows.Count > 0)
+            //{
+            //    Ds_a_TxtBox(ds);
 
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                //Ds_a_TxtBox(ds);               
-                //lblMensaje.Text = string.Empty;
-            }
+            //}
+            #endregion
         }
 
+        #endregion
 
-
+        #region mas comentado
         //private void TxtBox_a_Obj()
         //{
-        // objTarjeta.NroTarjeta = int.Parse(txtNro.Text);       
-        //objTarjeta.Saldo = int.Parse(txtSaldo.Text);           
-        //objTarjeta.AddRes = int.Parse(txtAddRes.Text);
+        //    objTarjeta.NroTarjeta = int.Parse(txtNro.Text);
+        //    objTarjeta.Saldo = int.Parse(txtSaldo.Text);
         //}
 
-
-
-        //private void Button1_Click(object sender, EventArgs e)
-        // {
-        //Register registro = new Register();
-        //registro.ShowDialog();
-
-
-        // int nGrabados = -1;           
-        //TxtBox_a_Obj(); 
-
-        //nGrabados = objCapsulaTarjeta.abmTarjetas("Buscar", objTarjeta);
-
-        //if (nGrabados == -1)
-        //{ lblMensaje.Text = "  No pudo grabar la Tarjeta en el sistema"; }
-        //else
-        //{
-        //    lblMensaje.Text = "  Se grabó con éxito Tarjeta.";
-        //    LlenarDGV();
-        //    Limpiar();
-        //}
-        //}
         //private void Limpiar()
         //{ txtNro.Text = string.Empty; txtSaldo.Text = string.Empty; }
 
-
-
         //private void Ds_a_TxtBox(DataSet ds)
         //{
-        //txtNro.Text = ds.Tables[0].Rows[0]["NroTarjeta"].ToString();           
-        //txtSaldo.Text = ds.Tables[0].Rows[0]["Saldo"].ToString();            
-        //txtNro.Enabled = false;
-        //txtSaldo.Enabled = false;
+        //    txtNro.Text = ds.Tables[0].Rows[0]["NroTarjeta"].ToString();
+        //    txtSaldo.Text = ds.Tables[0].Rows[0]["Saldo"].ToString();
+        //    txtNro.Enabled = false;
+        //    txtSaldo.Enabled = false;
         //}
+        #endregion
 
-        //private void BtnModificar_Click(object sender, EventArgs e)
-        //{
-        //    int nResultado = -1;
-        //    TxtBox_a_Obj();
-        //    nResultado = objCapsulaTarjeta.abmTarjetas("Modificar", objTarjeta);          
-        //    if (nResultado != -1)
-        //    {
-        //        MessageBox.Show("Aviso", "La Tarjeta fue Modificada con éxito");
-        //        Limpiar();
-        //        LlenarDGV();
-        //        txtNro.Enabled = true;
-        //        txtSaldo.Enabled = true;
-
-
-        //    }
-        //    else
-        //        MessageBox.Show("Error", "Se produjo un error al intentar modificar la tarjeta"); 
-        //}
-
-        //private void BtnAgregar_Click(object sender, EventArgs e)
-        //{
-        //    int nResultado = -1;
-        //    objTarjeta.Sumar(int.Parse(txtAddRes.Text));
-        //    nResultado = objCapsulaTarjeta.SumRes("Sumar", objTarjeta);
-        //    if (nResultado != -1)
-        //    {
-        //        MessageBox.Show("Aviso", "La Suma fue hecha con éxito");
-        //        Limpiar();
-        //        LlenarDGV();
-        //        txtNro.Enabled = true;
-        //        txtSaldo.Enabled = true;
-        //    }
-        //    else
-        //        MessageBox.Show("Error", "Se produjo un error al intentar Sumar saldo a la tarjeta");
-        //}
-
-        //private void BtnDescontar_Click(object sender, EventArgs e)
-        //{
-        //    int nResultado = -1;
-        //    objTarjeta.Restar(int.Parse(txtAddRes.Text));
-        //    nResultado = objCapsulaTarjeta.SumRes("Restar", objTarjeta);
-        //    if (nResultado != -1)
-        //    {
-        //        MessageBox.Show("Aviso", "El Descuento fue hecho con éxito");
-        //        Limpiar();
-        //        LlenarDGV();
-        //        txtNro.Enabled = true;
-        //    }
-        //    else
-        //        MessageBox.Show("Error", "Se produjo un error al intentar descontar saldo de la tarjeta");
-        //}
-
-
-        //private void TxtDni_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-        private void DgvTarjetas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
+      
     }
 }
 

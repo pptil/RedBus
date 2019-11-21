@@ -7,6 +7,7 @@ namespace FrontEnd
 {
     public partial class Register : Form
     {
+        #region inicializadores
         public Persona objPersona = new Persona();
         public Tarjeta objTarjeta = new Tarjeta();
 
@@ -15,15 +16,15 @@ namespace FrontEnd
 
         bool validar = true;
 
+        #endregion
+
         public Register()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         public bool validacion()
-        {
-           
+        {          
             if (txtCUIT.Text == null || txtDNI.Text == null || txtNombre.Text == null || cbTDni.SelectedItem == null ||cbSexo.SelectedItem == null)
             { validar = false; }
 
@@ -46,6 +47,12 @@ namespace FrontEnd
             
             
         }
+
+        #region KeyPress
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ControlLetra(e);
+        }
         private void txtCUIT_KeyPress(object sender, KeyPressEventArgs e)
         {
             ControlNumero(e);
@@ -56,11 +63,6 @@ namespace FrontEnd
         {
             ControlNumero(e);
         }
-
-        //private void txtNroTar_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-           // ControlNumero(e);
-        //}
 
         private void ControlNumero(KeyPressEventArgs e)
         {
@@ -77,6 +79,27 @@ namespace FrontEnd
                 e.Handled = true;
             }
         }
+
+        private void ControlLetra(KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
 
         private void btnReg_Click(object sender, EventArgs e)
         {       
@@ -104,15 +127,16 @@ namespace FrontEnd
 
         private void dtFechaNac_ValueChanged(object sender, EventArgs e)
         {
-
-            // Save today's date.
+            // Guardar la fecha actual en una variable
             var today = DateTime.Today;
-            // Calculate the age.
+            // Calcular la edad
             var age = today.Year - dtFechaNac.Value.Year;
-            // Go back to the year the person was born in case of a leap year
+            // Restar un año si no cumplio años 
             if (dtFechaNac.Value.Date > today.AddYears(-age)) age--;
             lbledad.Text = age.ToString();
         }
+
+ 
     }
     
 }

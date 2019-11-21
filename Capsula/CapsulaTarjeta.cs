@@ -29,6 +29,10 @@ namespace Capsula
             return objDatosRedBus.GetDNI(dni);
         }
 
+        public int DeleteTarjeta(Tarjeta tarjeta)
+        {
+            return objDatosRedBus.DeleteTarjeta(tarjeta);
+        }
         public bool Verificar(string tar, string per)
         {
             return objDatosRedBus.Comparison(tar, per);

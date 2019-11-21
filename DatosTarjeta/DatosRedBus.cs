@@ -77,14 +77,9 @@ namespace DatosTarjeta
         public DataSet listadoTarjetas(string cual)
         {
             string orden = string.Empty;
-            string select = "SELECT NroTarjeta " + "FROM Tarjetas" + " WHERE NroTarjeta = '" + int.Parse(cual) + "'";
 
             if (cual != "Todos")
                 orden = "select NroTarjeta, Saldo from Tarjetas where NroTarjeta = " + int.Parse(cual) + ";";
-
-
-            if (cual == "Tarjeta")
-                orden = select;
 
             else
                 orden = "select NroTarjeta, Saldo, a.DNI, Nombre from Tarjetas b, Persona a where b.DNI = a.DNI;";
@@ -115,7 +110,7 @@ namespace DatosTarjeta
            
         }
 
-        //GET TARJETAS, DNI Y SALDO
+        #region GET TARJETAS, DNI Y SALDO
         public int GetTarjeta(string cual)
         {
             int resultado = -1;          
@@ -250,6 +245,36 @@ namespace DatosTarjeta
 
             return resultado;
         }
+        #endregion
+
+        #region DELETE
+        public int DeleteTarjeta(Tarjeta tarjeta)
+        {
+
+            int resultado = -1;
+            string orden = ("DELETE from Tarjetas where NroTarjeta = " + tarjeta.NroTarjeta);
+
+            SqlCommand cmd = new SqlCommand(orden, conexion);
+
+            try
+            {
+                Abrirconexion();
+                resultado = cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al tratar borrar la tarjeta", e);
+            }
+
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
+            return resultado;
+        }
+    
+        #endregion
     }
 } 
     
